@@ -699,4 +699,5 @@ EXCEPTION
         RAISE NOTICE 'Error Context: %', error_context;
         RAISE NOTICE 'Error Detail: %', error_detail;
 END;
+
 $$;
