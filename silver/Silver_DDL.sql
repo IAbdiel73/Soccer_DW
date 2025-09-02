@@ -1,3 +1,14 @@
+/*
+===============================================================================
+DDL Script: Create Silver Tables
+===============================================================================
+Script Purpose:
+    This script creates tables in the 'silver' schema, dropping existing tables 
+    if they already exist.
+	  Run this script to re-define the DDL structure of 'staging' Tables
+===============================================================================
+*/
+
 ------------------------------------------------------------------------------
 ---------------------------CREATE silver.schedule-----------------------------
 ------------------------------------------------------------------------------
@@ -307,6 +318,7 @@ DROP TABLE IF EXISTS silver.playerteams;
     , updated_utc                      TIMESTAMP
     , dwh_created_date                 TIMESTAMPTZ DEFAULT NOW()
 );
+
 
 
 
