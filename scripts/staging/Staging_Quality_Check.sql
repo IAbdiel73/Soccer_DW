@@ -1,3 +1,23 @@
+/*
+===============================================================================
+Quality Checks
+===============================================================================
+Script Purpose:
+    This script performs various quality checks for data consistency, accuracy, 
+    and standardization across the 'silver' layer. It includes checks for:
+    - Null or duplicate primary keys.
+    - Unwanted spaces in string fields.
+    - Data standardization and consistency.
+    - Invalid date ranges and orders.
+    - Data consistency between related fields.
+
+Usage Notes:
+    - Run these checks after data loading staging Layer.
+    - Investigate and resolve any discrepancies found during the checks.
+===============================================================================
+*/
+
+
 ------------------------------------------------------------------------------
 ---------------------------QC staging.schedule--------------------------------
 ------------------------------------------------------------------------------
@@ -192,4 +212,5 @@ SELECT DISTINCT injurynotes FROM staging.playerteams; --solo scrambled
 SELECT LENGTH(globalopponentid::TEXT) FROM staging.playerteams WHERE LENGTH(globalopponentid::TEXT) != 8;
 SELECT globalopponentid FROM staging.playerteams WHERE globalopponentid NOT IN (SELECT DISTINCT globalteamid FROM staging.teamgames);
 SELECT COUNT(DISTINCT opponent) FROM staging.playerteams;
+
 SELECT DATE_PART('year',updatedutc) FROM staging.playerteams WHERE DATE_PART('year',updatedutc) > 2025 AND DATE_PART('year',updatedutc) < 2024;
